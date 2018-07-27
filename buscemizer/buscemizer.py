@@ -15,8 +15,8 @@ from buscemizer import BUSCEMI_EYES
 def buscemize(image: ndarray) -> Image:
     """Add Steve Buscemi's eyes to a face(s)"""
     buscemized = False
+    out_image = Image.fromarray(image)
     for face_landmarks in face_recognition.face_landmarks(image):
-        pil_image = Image.fromarray(image)
         eyes_image = Image.open(BUSCEMI_EYES, "r")
         if "left_eye" in face_landmarks:
             left_eye_min_x = \
@@ -34,7 +34,7 @@ def buscemize(image: ndarray) -> Image:
             left_size_x = left_size_x + left_size_x*5
             left_size_y = left_size_y + left_size_y*5
             eyes_image.thumbnail((left_size_x, left_size_y), Image.ANTIALIAS)
-            pil_image.paste(eyes_image, (left_pos_x, left_pos_y), eyes_image)
+            out_image.paste(eyes_image, (left_pos_x, left_pos_y), eyes_image)
             buscemized = True
 
         if "right_eye" in face_landmarks:
@@ -53,9 +53,10 @@ def buscemize(image: ndarray) -> Image:
             right_size_x = right_size_x + right_size_x * 5
             right_size_y = right_size_y + right_size_y * 5
             eyes_image.thumbnail((right_size_x, right_size_y), Image.ANTIALIAS)
-            pil_image.paste(eyes_image, (right_pos_x, right_pos_y), eyes_image)
+            out_image.paste(eyes_image, (right_pos_x, right_pos_y), eyes_image)
             buscemized = True
 
     if not buscemized:
         raise ValueError("No valid facial features to buscemize found")
-    return pil_image
+
+    return out_image
