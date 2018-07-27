@@ -9,7 +9,6 @@ Scripts:
  + :mod:`.__main__` - argparse entrypoint script
 Modules:
  + :mod:`.buscemizer` - Add Steve Buscemi's eyes to a face(s)
-
 """
 
 import os

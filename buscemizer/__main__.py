@@ -18,7 +18,7 @@ def get_parser() -> argparse.ArgumentParser:
                     "facial photos"
     )
 
-    parser.add_argument("image", help="image to buscemize")
+    parser.add_argument("image", help="Path to the image to buscemize")
 
     return parser
 
