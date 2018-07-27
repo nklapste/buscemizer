@@ -47,7 +47,7 @@ Example
 
 As an example lets buscemize Joe Biden.
 
-.. image:: example/biden.jpg
+.. image:: examples/biden.jpg
     :alt: Joe Biden
 
 To do such we run the following command:
@@ -61,6 +61,6 @@ created within the current working directory.
 
 If everything goes well it should look something like this...
 
-.. image:: example/biden-buscemi.jpg
+.. image:: examples/biden-buscemi.jpg
     :alt: Joe Biden with Steve Buscemi's eyes
 
