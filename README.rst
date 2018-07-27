@@ -40,3 +40,27 @@ For additional help in using buscemizer run the following command:
 .. code-block:: console
 
     buscemizer --help
+
+
+Example
+-------
+
+As an example lets buscemize Joe Biden.
+
+.. image:: example/biden.jpg
+    :alt: Joe Biden
+
+To do such we run the following command:
+
+.. code-block:: console
+
+    buscemizer examples/biden.jpg
+
+After the buscemizing is completed, a ``biden-buscemi.jpg`` file will be
+created within the current working directory.
+
+If everything goes well it should look something like this...
+
+.. image:: example/biden-buscemi.jpg
+    :alt: Joe Biden with Steve Buscemi's eyes
+
