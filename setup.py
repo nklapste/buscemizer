@@ -21,14 +21,20 @@ def find_version(*file_paths):
 
 
 NAME = "buscemizer"
-VERSION = find_version("buscemizer", "__init__.py")
+SAFE_NAME = NAME.replace("-", "_")
+VERSION = find_version(NAME, "__init__.py")
 DESCRIPTION = "Add Steve Buscemi's beautiful facial features to facial photos!"
+AUTHOR = "Nathan Douglas Klapstein"
+AUTHOR_EMAIL = "nklapste@ualberta.ca"
+URL = "https://github.com/nklapste/buscemizer"
+DOWNLOAD_URL = URL + "/archive/master.zip"
 
 
 class Pylint(test):
     def run_tests(self):
         from pylint.lint import Run
-        errno = Run([NAME, "--persistent", "y", "--rcfile", ".pylintrc"])
+        errno = Run([SAFE_NAME, "--persistent", "y", "--rcfile", ".pylintrc"])
+        sys.exit(errno)
 
 
 class PyTest(test):
@@ -36,7 +42,7 @@ class PyTest(test):
 
     def initialize_options(self):
         test.initialize_options(self)
-        self.pytest_args = "-v --cov={}".format(NAME)
+        self.pytest_args = "-v --cov={}".format(SAFE_NAME)
 
     def run_tests(self):
         import shlex
@@ -47,7 +53,7 @@ class PyTest(test):
 
 
 def readme():
-    with open("README.rst") as f:
+    with open("README.rst", encoding="utf-8") as f:
         return f.read()
 
 
@@ -56,9 +62,15 @@ setup(
     version=VERSION,
     description=DESCRIPTION,
     long_description=readme(),
+    long_description_content_type="text/x-rst",
+    author=AUTHOR,
+    author_email=AUTHOR_EMAIL,
+    url=URL,
+    download_url=DOWNLOAD_URL,
+    license="MIT",
     packages=find_packages(exclude=["test"]),
     package_data={
-        "": ["README.rst"],
+        "": ["README.rst", "examples/*.jpg"],
         "buscemizer": ["images/*.png"]
     },
     entry_points={
@@ -67,6 +79,8 @@ setup(
         ]
     },
     classifiers=[
+        "Environment :: Console",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
