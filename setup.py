@@ -69,6 +69,7 @@ setup(
     download_url=DOWNLOAD_URL,
     license="MIT",
     packages=find_packages(exclude=["test"]),
+    include_package_data=True,
     package_data={
         "": ["README.rst", "examples/*.jpg"],
         "buscemizer": ["images/*.png"]
