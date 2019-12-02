@@ -88,7 +88,7 @@ setup(
     ],
     install_requires=[
         "face-recognition>=1.2.2,<2.0.0",
-        "pillow>=5.2.0,<6.0.0",
+        "pillow>=6.0.0,<7.0.0",
         "numpy>=1.15.0,<2.0.0"
     ],
     tests_require=[
